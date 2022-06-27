@@ -1,17 +1,16 @@
 from django.shortcuts import render
 from django.http import Http404, HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
+from my_app.models import Usuario
 
 articles = {
     "sports": "deportes",
     "politics": "politica nacional",
     "education": "educacion en el peru"
 }
+
+
 # Create your views here.
-def index(request):
-    return HttpResponse("Hola mundo")
-
-
 def num_page_view(request, num_page):
     topic_list = list(articles.keys())
     topic = topic_list[num_page]
@@ -28,7 +27,9 @@ def topic_view(request, topic):
         raise Http404(topic)
 
 def simple_view(request):
-    return render(request, "my_app/example.html")
+    usuarios = Usuario.objects.all()
+    context = {"usuarios": usuarios}
+    return render(request, "my_app/example.html", context=context)
 
 def variable_view(request):
     my_var = {

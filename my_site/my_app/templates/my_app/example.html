@@ -6,4 +6,8 @@
 <h2>example simple</h2>
 <img src="{% static 'my_app/jesus.png' %}" alt="mi_img">
 
+
+{% for usuario in usuarios%}
+    <li>{{usuario.first_name}}</li>
+{% endfor %}
 {% endblock %}
