@@ -6,6 +6,8 @@ class Usuario(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     age = models.IntegerField(validators=[MinValueValidator(5), MaxValueValidator(100)])
+    email = models.EmailField(default="hola@example.pe")
+    password = models.CharField(max_length=20, default="example")
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} is {self.age} years old "

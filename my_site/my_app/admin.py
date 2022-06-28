@@ -6,5 +6,6 @@ from my_app.models import Usuario
 class UsuarioAdmin(admin.ModelAdmin):
     fieldsets = [
         ('NOMBRES',{'fields':['first_name', 'last_name']}),
-        ('EDAD',{'fields':['age']})
+        ('EDAD',{'fields':['age']}),
+        ('EMAIL',{'fields':['email','password']})
     ]

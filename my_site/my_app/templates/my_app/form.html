@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+<h1>FORMULARIO</h1>
+<div class="container myform">
+    <form method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="mb-3">
+                {{field.label_tag}}
+            </div>    
+            {{field}}
+            {{field.errors}}
+        {% endfor %}
+        
+        <input type="submit">
+    </form>
+</div>
+
+
+
+<h2>{# some comment #}</h2>
+<h2><a href="{% url 'my_app:simple' %}">CLICK ME TO GO TO SIMPLE</a></h2>
+{% endblock %}
+   

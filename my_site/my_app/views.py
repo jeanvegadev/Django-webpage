@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from multiprocessing import context
+from django.shortcuts import redirect, render
 from django.http import Http404, HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
 from my_app.models import Usuario
+from my_app.forms import UsuarioForm
 
 articles = {
     "sports": "deportes",
@@ -31,9 +33,13 @@ def simple_view(request):
     context = {"usuarios": usuarios}
     return render(request, "my_app/example.html", context=context)
 
-def variable_view(request):
-    my_var = {
-        'first_name':'jean',
-        'last_name':'vega'
-    }
-    return render(request, "my_app/variable.html", context=my_var)
+def form_view(request):
+    if request.method == "POST":
+        form = UsuarioForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('my_app:simple')) 
+    else:
+        form = UsuarioForm()
+    
+    return render(request, "my_app/form.html", context={"form": form})
