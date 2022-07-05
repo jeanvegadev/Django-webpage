@@ -10,4 +10,12 @@
 {% for usuario in usuarios%}
     <li>{{usuario.first_name}}</li>
 {% endfor %}
+
+{% if user.is_authenticated %}
+<p>You are logged in.</p>
+<p>Welcome {{user.get_username}}</p>
+{% else %}
+<p>You are not logged in</p>
+
+{% endif %}
 {% endblock %}
