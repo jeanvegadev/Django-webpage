@@ -4,6 +4,7 @@ from django.http import Http404, HttpResponse, HttpResponseNotFound, HttpRespons
 from django.urls import reverse
 from my_app.models import Usuario
 from my_app.forms import UsuarioForm
+from django.contrib.auth.decorators import login_required
 
 articles = {
     "sports": "deportes",
@@ -33,6 +34,7 @@ def simple_view(request):
     context = {"usuarios": usuarios}
     return render(request, "my_app/example.html", context=context)
 
+@login_required
 def form_view(request):
     if request.method == "POST":
         form = UsuarioForm(request.POST)
