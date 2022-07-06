@@ -8,4 +8,5 @@ urlpatterns = [
     path('variable', views.form_view, name="variable"),
     path('<int:num_page>', views.num_page_view, name=""),
     path('<str:topic>', views.topic_view, name="topic-page"),
+    path('signup/', views.SignUpView.as_view(), name="signup")
 ]
