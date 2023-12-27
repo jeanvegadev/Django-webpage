@@ -1,17 +1,10 @@
 from django import forms
-from .models import Usuario
-
-# class UsuarioForm(forms.Form):
-#     first_name = forms.CharField(label="First name",max_length=30)
-#     last_name = forms.CharField(label="Last name", max_length=30)
-#     age = forms.IntegerField(label="Age")
-#     email = forms.EmailField(label="Email")
-#     password = forms.CharField(label="Password", widget=forms.PasswordInput)
-
+from .models import CustomUser
+from django.contrib.auth.forms import AuthenticationForm
 
 class UsuarioForm(forms.ModelForm):
     class Meta:
-        model = Usuario
+        model = CustomUser
         fields = "__all__"
 
         error_messages = {
@@ -19,3 +12,8 @@ class UsuarioForm(forms.ModelForm):
                 'max_value': "Tú edad no debe ser más de 100"
             }
         }
+
+
+class LoginForm(AuthenticationForm):
+    # You can customize the form if needed
+    pass

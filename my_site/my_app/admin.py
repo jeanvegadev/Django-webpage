@@ -1,11 +1,10 @@
 from django.contrib import admin
-from my_app.models import Usuario
+from django.contrib.auth.admin import UserAdmin
+from .models import CustomUser
 
 # Register your models here.
-@admin.register(Usuario)
-class UsuarioAdmin(admin.ModelAdmin):
-    fieldsets = [
-        ('NOMBRES',{'fields':['first_name', 'last_name']}),
-        ('EDAD',{'fields':['age']}),
-        ('EMAIL',{'fields':['email','password']})
-    ]
+# @admin.register(CustomUser)
+# class UsuarioAdmin(admin.ModelAdmin):
+#     pass
+
+admin.site.register(CustomUser, UserAdmin)

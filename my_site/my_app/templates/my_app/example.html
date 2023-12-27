@@ -3,21 +3,25 @@
 
 {% block content%}
 
-<h2>example simple</h2>
-<img src="{% static 'my_app/jesus.png' %}" alt="mi_img">
 
+<div class="container">
+    <h1>Jean Carlos Vega</h1>
+    <img src="{% static 'my_app/jesus.png' %}" alt="mi_img">
 
-{% for usuario in usuarios%}
-    <li>{{usuario.first_name}}</li>
-{% endfor %}
+    <p>Welcome to my webpage. It is built using Django. </p>
+    <p>I am a software developer with more than three years of experience.</p>
+    {% for usuario in usuarios%}
+        <li>{{usuario.first_name}}</li>
+    {% endfor %}
 
-{% if user.is_authenticated %}
-<p>You are logged in.</p>
-<p>Welcome {{user.get_username}}</p>
-<a href="{% url 'logout' %}?next={{request.path}}">Logout</a>
-{% else %}
-<p>You are not logged in</p>
-<a href="{% url 'login' %}?next={{request.path}}">Login</a> <br>
-<a href="{% url 'my_app:signup' %}">Sign up</a>
+    {% if user.is_authenticated %}
+    <p>You are logged in.</p>
+    <p>Welcome {{user.get_username}}</p>
+    <a href="{% url 'logout' %}?next={{request.path}}">Logout</a>
+    {% else %}
+    <p>You are not logged in</p>
+
+</div>
+
 {% endif %}
 {% endblock %}

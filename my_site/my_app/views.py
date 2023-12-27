@@ -3,10 +3,11 @@ from re import template
 from django.shortcuts import redirect, render
 from django.http import Http404, HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
-from my_app.models import Usuario
-from my_app.forms import UsuarioForm
+from my_app.models import CustomUser
+from my_app.forms import UsuarioForm, LoginForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.views import LoginView
 from django.views.generic import CreateView
 
 articles = {
@@ -33,9 +34,10 @@ def topic_view(request, topic):
         raise Http404(topic)
 
 def simple_view(request):
-    usuarios = Usuario.objects.all()
+    usuarios = CustomUser.objects.all()
     context = {"usuarios": usuarios}
     return render(request, "my_app/example.html", context=context)
+
 
 @login_required
 def form_view(request):
@@ -54,3 +56,7 @@ class SignUpView(CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('login')
     template_name = 'my_app/signup.html'
+
+class CustomLoginView(LoginView):
+    template_name = 'myapp/login.html'
+    form_class = LoginForm
