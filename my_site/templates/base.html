@@ -7,17 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="{% static 'css/mycss.css'%}" rel="stylesheet">
     <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
     <link href="{% static 'my_app/custom.css'%}" rel="stylesheet">
     <title>JCVega</title>
 </head>
 <body>
 
-    <header>
+  <header id="header" class="navbar-absolute-top">
       <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg">
       <div class="container ">
@@ -35,13 +35,13 @@
               <a class="btn btn-light mx-2" href="{% url 'login' %}?next={{request.path}}">Login</a>
               <a class="btn btn-primary" href="{% url 'my_app:signup' %}">Sign up</a>
             </div>
-                
+            
         </div>
      
         
       </div>
-  </nav>
-    </header>
+    </nav>
+  </header>
 
     {% block content%}
 
