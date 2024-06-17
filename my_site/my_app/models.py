@@ -1,7 +1,12 @@
-# from django.db import models
-# from django.core.validators import MaxValueValidator, MinValueValidator
 from django.contrib.auth.models import AbstractUser
+from django.db import models
+
 
 class CustomUser(AbstractUser):
-    # Add your custom fields here
-    print('hola')
+    email = models.EmailField(max_length=100, unique=True)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username']
+
+    def __str__(self):
+        return self.email

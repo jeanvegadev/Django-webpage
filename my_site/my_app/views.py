@@ -4,7 +4,8 @@ from django.shortcuts import redirect, render
 from django.http import Http404, HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from my_app.models import CustomUser
-from my_app.forms import UsuarioForm, LoginForm
+from django.contrib.auth.views import LoginView
+from my_app.forms import EmailAuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LoginView
@@ -58,5 +59,4 @@ class SignUpView(CreateView):
     template_name = 'my_app/signup.html'
 
 class CustomLoginView(LoginView):
-    template_name = 'myapp/login.html'
-    form_class = LoginForm
+    authentication_form = EmailAuthenticationForm
